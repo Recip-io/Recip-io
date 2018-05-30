@@ -14,15 +14,15 @@ db.once('open', function() {
 // schema for new users
 let userSchema = mongoose.Schema({
   username: String,
-  email: string,
-  bio: { about: string, location: string },
+  email: String,
+  bio: { about: String, location: String },
   my_recipios: [],
   favorites: [],
-  hash: string,
-  salt: string
+  hash: String,
+  salt: String
 })
 
-let User = mongooose.model('User', userSchema);
+let User = mongoose.model('User', userSchema);
 
 var user = new User();
 

@@ -2,4 +2,4 @@
 
 ## Collaborative recipes and menu planning
 
-![alt text](/recipio_c.png "Logo")
+![alt text](/client/dist/images/recipio.png "Logo")
