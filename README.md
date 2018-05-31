@@ -1,4 +1,4 @@
-# Recip-io
+# Recipio
 
 ## Collaborative recipes and menu planning
 
