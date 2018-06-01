@@ -15,6 +15,7 @@ db.once('open', function() {
 let userSchema = mongoose.Schema({
   username: String,
   email: String,
+  date_created: { type: Date, default: Date.now },
   bio: { about: String, location: String },
   my_recipios: [],
   favorites: [],
@@ -33,19 +34,22 @@ user.save(function(err, user) {
   console.log(null, user);
 });
 
-// schema for user created recipios
 let recipioSchema = mongoose.Schema({
-  name: String,
-  created_by: String,
-  description: String,
-  tags: [''],
-  image_url: String,
-  recipe: String,
-  comments: [{ comment_body: String, date: Date }],
-  votes: Number,
-  favs:  Number,
-  shares: Number
+  imageUrlsBySize: { 90: String },
+  sourceDisplayName: String,
+  ingredients: [''],
+  id: String,
+  recipeName: String,
+  totalTimeInSeconds:  Number,
+  attributes: {
+      course: [''],
+      cuisine: ['']
+  },
+  votes: { type: Number, default: 0 },
+  favs: { type: Number, default: 0 },
+  shares: { type: Number, default: 0 }
 })
+
 
 let Recipio = mongoose.model('Recipio', recipioSchema);
 
@@ -58,5 +62,18 @@ recipio.save(function(err, recipio) {
   console.log(null, recipio);
 });
 
-module.exports.saveUser = user.save;
-module.exports.saveRecipio = recipio.save;
+var getRecipios = function(callback) {
+  Snack.find({}, function(err, recipios) {
+    console.log('getRecipios called');
+    if(err) {
+      callback(err, null);
+    } else {
+      callback(null, recipios);
+    }
+  });
+};
+
+module.exports.user = user;
+module.exports.recipio = recipio;
+
+module.exports.getRecipios = getRecipios;
