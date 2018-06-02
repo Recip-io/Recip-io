@@ -10,44 +10,28 @@ app.use(express.static(__dirname + '/../client/dist/'));
 app.use(bodyparser.json());
 
 app.post('/recipios', function(req, res) {
-  db.recipio.save(req.body);
-  recipio.save().then(item => { res,send("Your Recipio has been saved!"); })
+  db.recipio.save(req.body, function(err, data) {
+    if(err) {
+      // console.error()
+    } else {
+      console.log('woohoo! 💯 posted.')
+      res.sendStatus(201);
+    }
+  });
+  // recipio.save().then(item => { res.send("Your Recipio has been saved!"); })
 });
 
 app.get('/recipios', function(req, res) {
-  db.getRecipios(function(err, recipios) {
+  db.getRecipios(function(err, data) {
     if(err) {
-      res.sendStatus(500);
+      res.end(500);
     } else {
-      res.json(recipios);
+      // console.log(typeof data);
+      res.end(JSON.stringify(data));
     }
   });
 });
 
-var capresePizza = {
-  imageUrlsBySize: { 90: 'https://lh3.googleusercontent.com/ZYPv3vpwvoSCaoBcmg3BLafFHfchWkKMllUWlONPT-8VjivRFFtGGICfrqpM6I4J4Zm0_It1Orr5U7WMhDSsAQ=s90-c' },
-  sourceDisplayName: 'Bake Eat Repeat',
-  ingredients: [
-    "pizza doughs",
-    "olive oil",
-    "garlic salt",
-    "pesto",
-    "shredded mozzarella cheese",
-    "shredded parmesan cheese",
-    "tomatoes",
-    "balsamic reduction"
-  ],
-  id: 'Caprese-Pizza-1448674',
-  recipeName: 'Caprese Pizza',
-  totalTimeInSeconds:  1500,
-  attributes: {
-      course: ['Main Dishes'],
-      cuisine: ['Kid-Friendly']
-  },
-  votes: 1,
-  favs: 1,
-  shares: 0
-}
 
 let port = 8080;
 
