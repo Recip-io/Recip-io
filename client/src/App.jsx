@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Jquery from "jquery";
 
+// components
+import Submit from './components/Submit.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class App extends React.Component {
         <nav className="navbar">
         <div className="row">
           <div className="search-bar col-md-6 offset-md-3">
-            <p>This is where a search or submit happens</p>
+            <Submit />
           </div>
         </div>
         </nav>
