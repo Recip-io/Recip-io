@@ -35,7 +35,7 @@ user.save = function(err, user) {
 }
 
 let recipioSchema = mongoose.Schema({
-  imageUrlsBySize: { 90: String },
+  imageUrl: String,
   sourceDisplayName: String,
   ingredients: [''],
   id: String,
@@ -58,13 +58,14 @@ var recipio = new Recipio();
 
 recipio.save = function(err, recipio) {
   if (err) {
+    console.log('recipio .save err');
     console.error(err, null);
   }
   console.log(null, recipio);
 }
 
 var getRecipios = function(callback) {
-  Recipio.find({}).limit(10).exec(callback);
+  Recipio.find({}).sort('-date').limit(10).exec(callback);
 };
 
 var capresePizza = {
