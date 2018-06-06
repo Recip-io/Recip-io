@@ -11,17 +11,18 @@ class App extends React.Component {
 
     this.state = {
       recipes: [],
-      currentRecipe: null
+      currentRecipe: null,
+      username: ''
     };
   }
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <nav className="navbar">
         <div className="row">
           <div className="search-bar col-md-6 offset-md-3">
-            <Submit />
+            <Submit username={this.state.username} />
           </div>
         </div>
         </nav>
@@ -39,7 +40,7 @@ class App extends React.Component {
             <p>This is a place for a list of recipes</p>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
