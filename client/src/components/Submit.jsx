@@ -1,4 +1,5 @@
 import React from "react";
+import $ from "jquery";
 
 class Submit extends React.Component {
   constructor(props) {
@@ -15,18 +16,27 @@ class Submit extends React.Component {
     this.submitRecipe = this.submitRecipe.bind(this);
   }
 
-  handleChange(e) {
+  handleChange(event) {
     console.log(this.state.recipeName);
-    let change = { [e.target.name] : e.target.value };
+    let change = { [event.target.name] : event.target.value };
     console.log(change);
     this.setState(change);
   }
 
-  submitRecipe() {
-    console.log('IN submitRecipe');
-    $.post('/recipios', this.state)
-    .done((data) => {
-      console.log('the submit returned ', data);
+  submitRecipe(event) {
+    event.preventDefault();
+    console.log('in submitRecipe, and this.state = ', this.state);
+    $.ajax({
+      method: 'POST',
+      url: '/api/recipios',
+      data: JSON.stringify(this.state),
+      contentType: 'application/json'
+    })
+      .done(function(data) {
+        console.log('submit component posted successfully', data);
+      })
+      .fail(function() {
+        console.log('submit component failed to post');
     });
   }
 
@@ -34,9 +44,9 @@ class Submit extends React.Component {
     return (
       <div>
       <div className="search-submit-header">Add a recipe of your own</div>
-        <form method="POST">
+        <form method="POST" onSubmit={this.submitRecipe}>
           <input type="text" placeholder="Give your recipe a title" id="newRecipeName" name="recipeName" value={this.state.recipeName} onChange={this.handleChange}></input>
-          <input type="submit" value="Add" onClick={this.submitRecipe}></input>
+          <input type="submit" value="Add"></input>
           <textarea rows="8" placeholder="Enter a description – this can include quantites of ingredients, steps to create or even pairing recommendations!"  id="newRecipeDescription" name="description" value={this.state.description} onChange={this.handleChange}></textarea>
         </form>
       </div>
