@@ -14,16 +14,14 @@ app.post('/api/recipios', function(req, res) {
   db.createRecipio(req.body, function(err, data) {
     if(err) {
       console.log('server post /api/recipio err');
-      // console.error()
     } else {
       console.log('woohoo! 💯 posted.')
-      res.send(JSON.stringify(req.body) + ' has been added 👏');
+      res.send(JSON.stringify(req.body) + ' has been added 👏').status(201).end();
     }
   });
-  // recipio.save().then(item => { res.send("Your Recipio has been saved!"); })
 });
 
-app.get('/recipios', function(req, res) {
+app.get('/api/recipios', function(req, res) {
   db.getRecipios(function(err, data) {
     if(err) {
       res.end(500);
