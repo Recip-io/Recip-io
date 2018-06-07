@@ -9,13 +9,15 @@ let app = express();
 app.use(express.static(__dirname + '/../client/dist/'));
 app.use(bodyparser.json());
 
-app.post('/recipios', function(req, res) {
-  db.recipio.save(req.body, function(err, data) {
+app.post('/api/recipios', function(req, res) {
+  console.log('in server POST req.body = ', req.body);
+  db.createRecipio(req.body, function(err, data) {
     if(err) {
+      console.log('server post /api/recipio err');
       // console.error()
     } else {
       console.log('woohoo! 💯 posted.')
-      res.sendStatus(201);
+      res.send(JSON.stringify(req.body) + ' has been added 👏');
     }
   });
   // recipio.save().then(item => { res.send("Your Recipio has been saved!"); })
