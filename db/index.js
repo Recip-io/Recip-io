@@ -1,6 +1,8 @@
 const mongoose= require('mongoose');
-mongoose.connect('mongodb://localhost/recipios');
+const bcrypt = require('bcrypt');
+const session = require('express-session');
 
+mongoose.connect('mongodb://localhost/recipios');
 var db = mongoose.connection;
 
 db.on('error', function() {
@@ -54,14 +56,23 @@ let recipioSchema = mongoose.Schema({
 
 let Recipio = mongoose.model('Recipio', recipioSchema);
 
-var recipio = new Recipio();
+// var recipio = new Recipio();
 
-recipio.save = function(err, recipio) {
-  if (err) {
-    console.log('recipio .save err');
-    console.error(err, null);
-  }
-  console.log(null, recipio);
+const createRecipio = function(data, callback) {
+
+  let recipio = new Recipio({
+    imageUrl: data.imageUrl,
+    sourceDisplayName: data.sourceDisplayName,
+    ingredients: data.ingredients,
+    recipeName: data.recipeName,
+    totalTimeInSeconds: data.totalTimeInSeconds,
+    description: data.description
+  });
+
+  recipio.save(function (err, recipio) {
+    if (err) return console.error(err);
+    callback(err, recipio);
+  })
 }
 
 var getRecipios = function(callback) {
@@ -93,9 +104,8 @@ var capresePizza = {
   shares: 0
 }
 
-recipio.save(capresePizza);
+// recipio.save(capresePizza);
 
 module.exports.user = user;
-module.exports.recipio = recipio;
-
+module.exports.createRecipio = createRecipio;
 module.exports.getRecipios = getRecipios;
