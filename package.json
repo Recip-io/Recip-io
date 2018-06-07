@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/index.js",
-    "webpack": "webpack -d --watch"
+    "webpack": "webpack -d --watch",
+    "eslint": "eslint --fix /server /src /db"
   },
   "repository": {
     "type": "git",
@@ -41,5 +42,12 @@
     "react-router-dom": "^4.2.2",
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1"
   }
 }
