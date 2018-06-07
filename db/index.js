@@ -60,7 +60,9 @@ let Recipio = mongoose.model('Recipio', recipioSchema);
 
 const createRecipio = function(data, callback) {
 
-  let recipio = new Recipio({
+  console.log('the data passed into createRecipio = ', data);
+
+  var recipio = new Recipio({
     imageUrl: data.imageUrl,
     sourceDisplayName: data.sourceDisplayName,
     ingredients: data.ingredients,
@@ -69,9 +71,9 @@ const createRecipio = function(data, callback) {
     description: data.description
   });
 
-  recipio.save(function (err, recipio) {
+  recipio.save(function (err) {
     if (err) return console.error(err);
-    callback(err, recipio);
+    console.log('Recipe saved as new recipio.', recipio);
   })
 }
 
