@@ -1,3 +1,4 @@
+import React from 'react';
 
 var searchYummly = ({key, query, max = 5}, callback) => {
   $.get('https://api.yummly.com/v1/api/recipes', {
@@ -22,4 +23,16 @@ var searchYummly = ({key, query, max = 5}, callback) => {
 };
 
 
+const SearchYummly = (props) => (
+  <div className="search-bar">
+
+  </div>
+);
+
 window.searchYummly = searchYummly;
+
+export default SearchYummly;
+
+    // <form method="POST" onSubmit={}>
+    //   <input type="text" placeholder="Search Yummly" id="searchyummly" name="recipeName" value={} onChange={}></input>
+    // </form>
