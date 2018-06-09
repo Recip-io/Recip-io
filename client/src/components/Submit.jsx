@@ -47,9 +47,10 @@ class Submit extends React.Component {
         <form method="POST" onSubmit={this.submitRecipe}>
           <input type="text" placeholder="Give your recipe a title" id="newRecipeName" name="recipeName" value={this.state.recipeName} onChange={this.handleChange}></input>
           <input type="submit" value="Add"></input>
-          <textarea rows="8" placeholder="Enter a description – this can include quantites of ingredients, steps to create or even pairing recommendations!"  id="newRecipeDescription" name="description" value={this.state.description} onChange={this.handleChange}></textarea>
+          <textarea rows="12" placeholder="Enter a description – this can include quantites of ingredients, steps to create or even pairing recommendations!"  id="newRecipeDescription" name="description" value={this.state.description} onChange={this.handleChange}></textarea>
           <input type="text" placeholder="Add a shopping list for your ingredients (seperate each item with a comma)" id="newRecipeIngredients" name="ingredients" value={this.state.ingredients} onChange={this.handleChange}></input>
           <input type="text" placeholder="Add an image url (optional)" id="newRecipeImageUrl" name="imageUrl" value={this.state.imageUrl} onChange={this.handleChange}></input>
+          <input type="text" placeholder="Author or source" id="newRecipesourceDisplayName" name="sourceDisplayName" value={this.state.sourceDisplayName} onChange={this.handleChange}></input>
         </form>
       </div>
     );
