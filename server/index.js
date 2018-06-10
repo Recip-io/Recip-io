@@ -2,16 +2,17 @@ console.log(Date());
 
 const express = require('express');
 const bodyparser = require('body-parser');
-const db = require('../db/index.js');
+const Db = require('../db/index.js');
 
 let app = express();
+let recipeRouter = express.Router();
 
 app.use(express.static(__dirname + '/../client/dist/'));
 app.use(bodyparser.json());
 
 app.post('/api/recipios', function(req, res) {
   console.log('in server POST req.body = ', req.body);
-  db.createRecipio(req.body, function(err, data) {
+  Db.createRecipio(req.body, function(err, data) {
     if(err) {
       console.log('server post /api/recipio err');
     } else {
@@ -22,7 +23,7 @@ app.post('/api/recipios', function(req, res) {
 });
 
 app.get('/api/recipios', function(req, res) {
-  db.getRecipios(function(err, data) {
+  Db.getRecipios(function(err, data) {
     if(err) {
       res.end(500);
     } else {
@@ -32,6 +33,30 @@ app.get('/api/recipios', function(req, res) {
   });
 });
 
+app.post('/api/recipios/search', function(req, res) {
+  console.log('in server search req.body = ', req.body);
+  Db.searchRecipios(req.body, function(err, data) {
+    if(err) {
+      res.end(500);
+    } else {
+      // console.log(typeof data);
+      console.log('in server search the result is = ', JSON.stringify(data));
+      res.end(JSON.stringify(data));
+    }
+  });
+});
+
+app.post('/api/recipios/fav', function(req, res) {
+  // let id = req.params.recipioId;
+  console.log('in server fav req.body = ', req.body);
+  Db.favIncrementer(req.body, function(err) {
+    if (err) {
+      res.send(500);
+    } else {
+      res.status(201).send(req.body._id);
+    }
+  });
+})
 
 let port = 8080;
 
