@@ -39,29 +39,28 @@ class App extends React.Component {
     });
   }
 
-  componentDidUpdate() {
-    console.log(this.state.recipes);
-  }
-
-
+  // componentDidUpdate() {
+  //   console.log(this.state.recipes);
+  // }
 
   changeView(option) {
     this.setState({
       view: option
     });
+    this.componentDidMount();
   }
 
   renderView() {
     const {view} = this.state;
 
     if (view === 'recipeList') {
-      return <RecipeList recipes={this.state.recipes} handleClick={() => this.changeView('recipeview')} handleRecipeTitleOrImageClick={this.handleRecipeTitleOrImageClick} />
+      return <RecipeList recipes={this.state.recipes} handleClick={() => this.changeView('recipeview')}  componentDidMount={this.componentDidMount} handleRecipeTitleOrImageClick={this.handleRecipeTitleOrImageClick} />
     } else if (view === 'recipe') {
       return <Recipe recipe={this.state.currentRecipe}/>
     } else if (view === 'submit') {
       return <div className="search-bar"><Submit username={this.state.username} /></div>
     } else if (view === 'searchdb') {
-      return <SearchDB />
+      return <div className="search-bar"><SearchDB /></div>
     } else if (view === 'searchyummly') {
       return <SearchYummly />
     } else {
@@ -94,7 +93,7 @@ class App extends React.Component {
             ? 'nav-selected'
             : 'nav-unselected'}
             onClick={() => this.changeView('searchdb')}>
-            Search for Recipios
+            Search your Recipios
           </span>
           <span className={this.state.view === 'searchyummly'
             ? 'nav-selected'
