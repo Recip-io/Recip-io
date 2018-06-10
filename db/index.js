@@ -51,7 +51,11 @@ let recipioSchema = mongoose.Schema({
   votes: { type: Number, default: 0 },
   favs: { type: Number, default: 0 },
   shares: { type: Number, default: 0 }
-})
+},
+  {
+    timestamps: true
+  }
+)
 
 
 let Recipio = mongoose.model('Recipio', recipioSchema);
@@ -78,7 +82,33 @@ const createRecipio = function(data, callback) {
 }
 
 var getRecipios = function(callback) {
-  Recipio.find({}).sort('-date').limit(10).exec(callback);
+  Recipio.find({}).sort({createdAt: 'descending'}).limit().exec(callback);
+};
+
+var searchRecipios = function(data, callback) {
+  var searchRecipeName = null;
+  var searchIngredients = null;
+  var searchSourceDisplayName = null;
+  var searchDescription = null;
+
+  if (data.recipeName.length > 0) {
+    searchRecipeName = data.recipeName;
+  }
+  if (data.ingredients.length > 0) {
+    searchIngredients = data.ingredients;
+  }
+  if (data.sourceDisplayName.length > 0) {
+    searchSourceDisplayName = data.sourceDisplayName;
+  }
+  if (data.description.length > 0) {
+    searchDescription = data.description;
+  }
+
+  Recipio.find({recipeName: searchRecipeName}).sort({createdAt: 'descending'}).limit().exec(callback);
+};
+
+var favIncrementer = function(id, callback) {
+  Recipio.findOneAndUpdate({ _id: id }, { $inc: { 'favs': 1 }}).exec(callback);
 };
 
 var capresePizza = {
@@ -111,3 +141,5 @@ var capresePizza = {
 module.exports.user = user;
 module.exports.createRecipio = createRecipio;
 module.exports.getRecipios = getRecipios;
+module.exports.favIncrementer = favIncrementer;
+module.exports.searchRecipios = searchRecipios;
