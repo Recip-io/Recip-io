@@ -43,7 +43,7 @@ class Submit extends React.Component {
   render() {
     return (
       <div>
-      <div className="search-submit-header">Add a recipe of your own</div>
+        <div className="search-submit-header">Add a recipe of your own</div>
         <form method="POST" onSubmit={this.submitRecipe}>
           <input type="text" placeholder="Give your recipe a title" id="newRecipeName" name="recipeName" value={this.state.recipeName} onChange={this.handleChange}></input>
           <input type="submit" value="Add"></input>
