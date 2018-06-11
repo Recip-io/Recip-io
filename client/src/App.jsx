@@ -61,10 +61,6 @@ class App extends React.Component {
     });
   }
 
-  // componentDidUpdate() {
-  //   console.log(this.state.recipes);
-  // }
-
   changeView(option) {
     this.setState({
       view: option
@@ -72,7 +68,7 @@ class App extends React.Component {
     this.componentDidMount();
   }
 
-  renderView() {
+  handleView() {
     const {view} = this.state;
 
     if (view === 'recipeList') {
@@ -128,7 +124,7 @@ class App extends React.Component {
         </nav>
 
         <div className="main">
-          {this.renderView()}
+          {this.handleView()}
         </div>
       </React.Fragment>
     );
@@ -139,28 +135,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('app')
 );
-
-
-
-        // <div className="row">
-        //   <div className="search-bar col-md-6 offset-md-3">
-        //     <Submit username={this.state.username} />
-        //   </div>
-        //   <div>
-        //     <RecipeList recipes={this.state.recipes} handleClick={() => this.changeView('recipeview')} handleRecipeTitleOrImageClick={this.handleRecipeTitleOrImageClick} />
-        //   </div>
-        // </div>
-        // <div className="row">
-        //   <div className="col-md-7">
-        //     <h1>A recip<span id="iotextarea">io</span> h1 heading</h1>
-        //     <h2>A recipio h2 heading</h2>
-        //     <h3>A recipio h3 heading</h3>
-        //     <h4>A recipio h4 heading</h4>
-        //     <h5>A recipio h5 heading</h5>
-        //     <h6>A recipio h6 heading</h6>
-        //     <p>An area to display recipes</p>
-        //   </div>
-        //   <div className="col-md-5">
-        //     <p>This is a place for a list of recipes</p>
-        //   </div>
-        // </div>
