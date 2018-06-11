@@ -70,6 +70,18 @@ app.post('/api/recipios/fav', function(req, res) {
   });
 })
 
+app.post('/api/recipios/delete', function(req, res) {
+  // let id = req.params.recipioId;
+  console.log('in server delete req.body = ', req.body);
+  Db.deleteRecipio(req.body, function(err) {
+    if (err) {
+      res.send(500);
+    } else {
+      res.status(200).send(req.body._id);
+    }
+  });
+})
+
 let port = 8080;
 
 app.listen(port, function() {
