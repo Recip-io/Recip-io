@@ -7,7 +7,10 @@ import Submit from './components/Submit.jsx';
 import Recipe from './components/Recipe.jsx';
 import RecipeList from './components/RecipeList.jsx';
 import SearchDB from './components/SearchDB.jsx';
-import SearchYummly from './components/searchYummly.jsx';
+import SearchYummly from './components/SearchYummly.jsx';
+import YummlyRecipe from './components/YummlyRecipe.jsx';
+import YummlyRecipeList from './components/YummlyRecipeList.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +25,8 @@ class App extends React.Component {
     this.changeView = this.changeView.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleRecipeTitleOrImageClick = this.handleRecipeTitleOrImageClick.bind(this);
+    this.handleDbSearchResults = this.handleDbSearchResults.bind(this);
+    this.handleYummlySearchResults = this.handleYummlySearchResults.bind(this);
   }
 
   componentDidMount() {
@@ -30,12 +35,29 @@ class App extends React.Component {
         recipes: JSON.parse(data)
       })
     }.bind(this));
+    console.log(this.state.recipes);
   }
 
   handleRecipeTitleOrImageClick(recipe) {
     this.setState({
       view: 'recipe',
       currentRecipe: recipe
+    });
+  }
+
+  handleDbSearchResults(data) {
+    console.log('handleDbSearchResults', data);
+    this.setState({
+      view: 'recipe',
+      currentRecipe: data[0]
+    });
+  }
+
+  handleYummlySearchResults(data) {
+    console.log('handleYummlySearchResults', data);
+    this.setState({
+      view: 'yummlySearchResults',
+      recipes: data
     });
   }
 
@@ -60,9 +82,11 @@ class App extends React.Component {
     } else if (view === 'submit') {
       return <div className="search-bar"><Submit username={this.state.username} /></div>
     } else if (view === 'searchdb') {
-      return <div className="search-bar"><SearchDB /></div>
+      return <div className="search-bar"><SearchDB handleDbSearchResults={this.handleDbSearchResults} /></div>
     } else if (view === 'searchyummly') {
-      return <SearchYummly />
+      return <div className="search-bar"><SearchYummly handleYummlySearchResults={this.handleYummlySearchResults} /></div>
+    } else if (view === 'yummlySearchResults'){
+      return <YummlyRecipeList recipes={this.state.recipes} />
     } else {
       return <Recipe />
     }
