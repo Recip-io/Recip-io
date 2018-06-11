@@ -81,6 +81,25 @@ const createRecipio = function(data, callback) {
   })
 }
 
+const addYumRecipe = function(data, callback) {
+
+  console.log('the data passed into createRecipio = ', data);
+
+  var recipio = new Recipio({
+    imageUrl: data.imageUrlsBySize[90],
+    sourceDisplayName: data.sourceDisplayName,
+    ingredients: data.ingredients,
+    recipeName: data.recipeName,
+    totalTimeInSeconds: data.totalTimeInSeconds,
+    id: data.id
+  });
+
+  recipio.save(function (err) {
+    if (err) return console.error(err);
+    console.log('Yummly recipe saved as new recipio.', recipio);
+  })
+}
+
 var getRecipios = function(callback) {
   Recipio.find({}).sort({favs: 'descending'}).limit().exec(callback);
 };
@@ -143,3 +162,4 @@ module.exports.createRecipio = createRecipio;
 module.exports.getRecipios = getRecipios;
 module.exports.favIncrementer = favIncrementer;
 module.exports.searchRecipios = searchRecipios;
+module.exports.addYumRecipe = addYumRecipe;
