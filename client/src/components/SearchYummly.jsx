@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Recipe from './Recipe.jsx';
 import RecipeList from './RecipeList.jsx';
+const YummlyApiKeys = require('./Yummly.jsx');
 
 class SearchYummly extends React.Component {
   constructor(props) {
@@ -14,8 +15,6 @@ class SearchYummly extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.searchYummly = this.searchYummly.bind(this);
-    // this.setState = this.setState.bind(this);
-    // this.passResult = this.passResult.bind(this);
   }
 
   handleChange(event) {
@@ -25,21 +24,18 @@ class SearchYummly extends React.Component {
     this.setState(change);
   }
 
-  searchYummly(stateInSearch, callback) {
-    // event.preventDefault();
+  searchYummly(searchTerm, callback) {
+    console.log(YummlyApiKeys)
     $.get('https://api.yummly.com/v1/api/recipes', {
-      _app_id: '8b8cd9e8',
-      _app_key: 'ef204733e01609824a9281627c32fee0',
-      q: stateInSearch,
+      _app_id: YummlyApiKeys.ID,
+      _app_key: YummlyApiKeys.Key,
+      q: searchTerm,
       requirePictures: true,
       maxResult: 10,
     })
     .done(function(data) {
       console.log('this is the yummly result ', data.matches);
       callback(data.matches);
-      // if (callback) {
-      //   callback(items);
-      // }
     })
     .fail(function() {
         console.log('yummly component failed to search');
@@ -47,16 +43,8 @@ class SearchYummly extends React.Component {
   }
 
   handleSearch(event) {
-    // console.log('handleSearch props', this.props);
     event.preventDefault();
     this.searchYummly(this.state.recipeName, (data) => {
-            // this.handleResult(data);
-      // this.setState({
-      //   searchResult: data
-      // })
-
-      //     console.log('in handle props', this.props);
-      // console.log('data in handle = ', JSON.parse(data));
       this.props.handleYummlySearchResults(data);
     })
   }
@@ -76,10 +64,4 @@ class SearchYummly extends React.Component {
   }
 }
 
-// window.searchYummly = searchYummly;
-
 export default SearchYummly;
-
-    // <form method="POST" onSubmit={}>
-    //   <input type="text" placeholder="Search Yummly" id="searchyummly" name="recipeName" value={} onChange={}></input>
-    // </form>
