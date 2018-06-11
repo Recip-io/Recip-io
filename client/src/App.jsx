@@ -96,7 +96,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="navbar">
+        <nav className="navbar navbar-fixed-top">
           <span className="logo"
             onClick={() => this.changeView('recipeList')}>
             <img id="logo" src="/images/recipio.svg" alt="logo"></img>
