@@ -130,6 +130,10 @@ var favIncrementer = function(id, callback) {
   Recipio.findOneAndUpdate({ _id: id }, { $inc: { 'favs': 1 }}).exec(callback);
 };
 
+var deleteRecipio = function(id, callback) {
+  Recipio.findOneAndDelete(id).exec(callback);
+}
+
 var capresePizza = {
   imageUrlsBySize: { 90: 'https://lh3.googleusercontent.com/ZYPv3vpwvoSCaoBcmg3BLafFHfchWkKMllUWlONPT-8VjivRFFtGGICfrqpM6I4J4Zm0_It1Orr5U7WMhDSsAQ=s90-c' },
   sourceDisplayName: 'Bake Eat Repeat',
@@ -163,3 +167,4 @@ module.exports.getRecipios = getRecipios;
 module.exports.favIncrementer = favIncrementer;
 module.exports.searchRecipios = searchRecipios;
 module.exports.addYumRecipe = addYumRecipe;
+module.exports.deleteRecipio = deleteRecipio;
