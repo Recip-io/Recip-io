@@ -22,6 +22,18 @@ app.post('/api/recipios', function(req, res) {
   });
 });
 
+app.post('/api/recipios/yummly', function(req, res) {
+  console.log('in server POST req.body = ', req.body);
+  Db.addYumRecipe(req.body, function(err, data) {
+    if(err) {
+      console.log('server post /api/recipios/yummly err');
+    } else {
+      console.log('woohoo! 💯 posted.')
+      res.send(JSON.stringify(req.body) + ' has been added 👏').status(201).end();
+    }
+  });
+});
+
 app.get('/api/recipios', function(req, res) {
   Db.getRecipios(function(err, data) {
     if(err) {
