@@ -82,7 +82,7 @@ const createRecipio = function(data, callback) {
 }
 
 var getRecipios = function(callback) {
-  Recipio.find({}).sort({createdAt: 'descending'}).limit().exec(callback);
+  Recipio.find({}).sort({favs: 'descending'}).limit().exec(callback);
 };
 
 var searchRecipios = function(data, callback) {
