@@ -25,7 +25,7 @@ const YummlyRecipe = (props) => (
       <a href={'https://www.yummly.com/recipe/' + props.recipe.id} target="_blank"><span className="recipe-title">{props.recipe.recipeName}</span></a>
       <div className="recipe-byline"><span className="recipe-byline-author">{props.recipe.sourceDisplayName}</span></div>
       <img height="90px" src={props.recipe.imageUrlsBySize[90]} className="recipe-image-yummly" />
-      <div className="recipe-stats" onClick={() => addRecipe(props)}><span>&#43;</span> Add to my recipios</div>
+      <div className="recipe-stats" onClick={() => addRecipe(props)}><span class="glyphicon glyphicon-plus"></span> Add to my recipios</div>
     </div>
   </li>
 );
