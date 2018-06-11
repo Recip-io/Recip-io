@@ -80,6 +80,10 @@ a {
     color: #78520e;
 }
 
+a:hover {
+    color: #78520e;
+}
+
 .search-submit-header {
   color: #4a453c;
   font-family: 'Lora', serif;
@@ -122,7 +126,7 @@ a {
 .main {
   margin-left: 10%;
   margin-right: 10%;
-  margin-top: 8%;
+  margin-top: 7%;
 }
 
 .navbar {
@@ -133,7 +137,7 @@ a {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   border-bottom: 2px solid #d5d4ce;
-  /*box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);*/
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .nav {
@@ -241,7 +245,7 @@ a {
   font-size: 1.3em;
   line-height: 1.5em;
   /*background-color: #fdfdfd;*/
-  padding: 5px 20px 10px 20px;
+  padding: 5px 20px 10px 0px;
 }
 
 .recipe-list {
@@ -254,7 +258,7 @@ a {
 }
 
 .recipe-list-entry {
-  min-height: 350px;
+  min-height: 380px;
   /*height: 100%;*/
   margin: 25px 0px 25px 0px;
   list-style: none;
@@ -324,7 +328,20 @@ a {
 }
 
 .recipe-title:hover {
-  color: ##b67b1b;
+  color: #b67b1b;
+  cursor: pointer;
+}
+
+.recipe-title-yum {
+  color: #4a453c;
+  font-weight: 400;
+  font-size: 3.5vw;
+  line-height: 1em;
+  font-family: 'Lora', serif;
+}
+
+.recipe-title-yum:hover {
+  color: #337ab7;
   cursor: pointer;
 }
 
@@ -347,22 +364,23 @@ a {
   object-fit: cover;
   float: right;
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
   overflow: hidden;
   margin-left: 20px;
+  margin-top: 20px;
   /*margin-bottom: 5%;*/
   /*padding: 1%;*/
 }
 
 .recipe-image-yummly {
   object-fit: cover;
-  position: static;
+  position: relative;
   left: 75%;
-  top: 4%;
+  top: 30%;
   width: 100%;
   max-width: 90px;
   overflow: hidden;
-  margin-left: 20px;
+  margin-top: 20px;
   /*margin-bottom: 5%;*/
   /*padding: 1%;*/
 }
@@ -380,7 +398,7 @@ a {
 
 .recipe-stats {
   font-size: 1em;
-  cursor: pointer;
+  /*cursor: pointer;*/
   /*width: 75px;*/
   /*display: inline;*/
   font-weight: bold;
@@ -390,6 +408,11 @@ a {
 
 .recipe-stats:hover {
   color: #b67b1b;
+  cursor: pointer;
+}
+
+.recipe-stats:visited {
+  color: #edece5;
 }
 
 .loading {
