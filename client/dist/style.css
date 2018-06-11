@@ -76,6 +76,10 @@ textarea {
     box-sizing: border-box;
 }
 
+a {
+    color: #78520e;
+}
+
 .search-submit-header {
   color: #4a453c;
   font-family: 'Lora', serif;
