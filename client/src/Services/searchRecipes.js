@@ -1,10 +1,10 @@
 import $ from 'jquery';
 
-export function searchRecipes(stateInSearch, callback) {
+export function searchRecipes(searchTerm, callback) {
   $.ajax({
     method: 'POST',
     url: '/api/recipios/search',
-    data: stateInSearch,
+    data: searchTerm,
     contentType: 'application/json'
   })
     .then(function(data) {
@@ -14,3 +14,12 @@ export function searchRecipes(stateInSearch, callback) {
       console.log('search component failed to post');
   });
 }
+
+
+// axios.post('/api/recipios/search', searchTerm)
+//   .then(function(data) {
+//     callback(data);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
