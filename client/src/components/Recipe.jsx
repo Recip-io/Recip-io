@@ -3,7 +3,6 @@ import $ from 'jquery';
 
 var favPlusOne = function(props) {
   var recipioId = JSON.stringify({ _id: props.recipe._id });
-  console.log('in favPlusOne, recipioId = ', recipioId);
   $.ajax({
     method: 'POST',
     url: '/api/recipios/fav',
@@ -23,7 +22,6 @@ var deleteOne = function(props) {
   var shouldDelete = confirm("Permanantly Delete " + props.recipe.recipeName);
   if (shouldDelete) {
     var recipioId = JSON.stringify({ _id: props.recipe._id });
-    console.log('in deleteOne, recipioId = ', recipioId);
     $.ajax({
       method: 'POST', // DELETE
       url: '/api/recipios/delete', // attach id instead of delete

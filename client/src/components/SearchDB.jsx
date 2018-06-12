@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Recipe from './Recipe.jsx';
 import RecipeList from './RecipeList.jsx';
-import {searchRecipes} from '../Services/searchRecipes.js'
+import {searchRecipes} from '../services/searchRecipes.js'
 
 class SearchDB extends React.Component {
   constructor(props) {
@@ -13,14 +13,11 @@ class SearchDB extends React.Component {
         recipeName: '',
         description: ''
     };
-    console.log(this.props);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    console.log(this.state.recipeName);
     let change = { [event.target.name] : event.target.value };
-    console.log('this changed ', change);
     this.setState(change);
   }
 

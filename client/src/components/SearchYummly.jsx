@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import Recipe from './Recipe.jsx';
 import RecipeList from './RecipeList.jsx';
-const YummlyApiKeys = require('./Yummly.jsx');
+const YummlyApiKeys = require('./config.js');
 
 class SearchYummly extends React.Component {
   constructor(props) {
@@ -18,14 +18,11 @@ class SearchYummly extends React.Component {
   }
 
   handleChange(event) {
-    console.log(this.state.recipeName);
     let change = { [event.target.name] : event.target.value };
-    console.log('this changed ', change);
     this.setState(change);
   }
 
   searchYummly(searchTerm, callback) {
-    console.log(YummlyApiKeys)
     $.get('https://api.yummly.com/v1/api/recipes', {
       _app_id: YummlyApiKeys.ID,
       _app_key: YummlyApiKeys.Key,
@@ -34,7 +31,6 @@ class SearchYummly extends React.Component {
       maxResult: 10,
     })
     .done(function(data) {
-      console.log('this is the yummly result ', data.matches);
       callback(data.matches);
     })
     .fail(function() {

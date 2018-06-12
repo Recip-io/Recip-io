@@ -19,15 +19,12 @@ class Submit extends React.Component {
   }
 
   handleChange(event) {
-    console.log(this.state.recipeName);
     let change = { [event.target.name] : event.target.value };
-    console.log(change);
     this.setState(change);
   }
 
   submitRecipe(event) {
     event.preventDefault();
-    console.log('in submitRecipe, and this.state = ', this.state);
     $.ajax({
       method: 'POST',
       url: '/api/recipios',

@@ -1,7 +1,6 @@
 import $ from 'jquery';
 
 export function searchRecipes(stateInSearch, callback) {
-  console.log('in searchRecipe, and this.state = ', stateInSearch);
   $.ajax({
     method: 'POST',
     url: '/api/recipios/search',
