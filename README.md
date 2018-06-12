@@ -1,6 +1,9 @@
 # Recipio
-
 ### Your recipe hub - save, share or find something new
+
+HRR31 Team Wheaties - Greenfield Project
+## Team
+- __Product Owner__: [Heshie London](https://github.com/H-London)
 
 ![alt text](/client/dist/images/recipio.svg "Logo")
 
@@ -8,6 +11,51 @@
 ## Notable technologies used:
 **Node, Express, MongoDB, Mongoose, jQuery, React, Babel, Webpack Bootstrap**
 
+## Table of Contents
+
+1. [Usage](#Usage)
+1. [Requirements](#requirements)
+1. [Getting Started](#getting-started)
+    1. [Installing](#installing)
+    1. [Running](#running)
+1. [Screenshots](#screenshots)
+
+## Usage
+
+Local: http://localhost:8080/
+
+## Requirements
+
+- Node 8.11.2
+- React 16.4.0
+- MongoDB 3.6.5
+- Express 4.16.3
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Installing
+
+From within the root directory:
+
+```
+npm install
+```
+
+### Running
+
+To start server:
+
+```
+npm start
+```
+
+To start webpack:
+
+```
+npm run webpack
+```
 
 ## Screenshots
 
