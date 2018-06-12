@@ -69,14 +69,14 @@ Please use ```client/src/components/configTemplate.js``` to hold the API keys.
 #### - Recipe List View
 ![alt text](/client/dist/images/recipeListView.png "recipeListView")
 
-#### Recipe View
+#### - Recipe View
 ![alt text](/client/dist/images/recipeView.png "recipeView")
 
-#### Submit Recipe
+#### - Submit Recipe
 ![alt text](/client/dist/images/addRecipe.png "addRecipe")
 
-#### Internal DB Search
+#### - Internal DB Search
 ![alt text](/client/dist/images/dbSearch.png "dbSearch")
 
-#### External API Search
+#### - External API Search
 ![alt text](/client/dist/images/extApiSearch.png "extApiSearch")
