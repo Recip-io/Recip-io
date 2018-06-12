@@ -60,11 +60,8 @@ typings/
 # next.js build output
 .next
 
-# package-lock.json
-package-lock.json
-
 # transpiled react
 /client/dist/bundle.js
 
-# yummly api credentials
-client/src/components/Yummly.jsx
+# external api credentials
+client/src/components/config.js
