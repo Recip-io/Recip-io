@@ -35,7 +35,6 @@ class App extends React.Component {
         recipes: JSON.parse(data)
       })
     }.bind(this));
-    console.log(this.state.recipes);
   }
 
   handleRecipeTitleOrImageClick(recipe) {
@@ -46,7 +45,6 @@ class App extends React.Component {
   }
 
   handleDbSearchResults(data) {
-    console.log('handleDbSearchResults', data);
     this.setState({
       view: 'recipe',
       currentRecipe: data[0]
@@ -54,7 +52,6 @@ class App extends React.Component {
   }
 
   handleYummlySearchResults(data) {
-    console.log('handleYummlySearchResults', data);
     this.setState({
       view: 'yummlySearchResults',
       recipes: data
