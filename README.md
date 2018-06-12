@@ -18,6 +18,7 @@ HRR31 Team Wheaties - Greenfield Project
 1. [Getting Started](#getting-started)
     1. [Installing](#installing)
     1. [Running](#running)
+    1. [External API](#external-api)
 1. [Screenshots](#screenshots)
 
 ## Usage
@@ -30,6 +31,8 @@ Local: http://localhost:8080/
 - React 16.4.0
 - MongoDB 3.6.5
 - Express 4.16.3
+
+
 
 ## Getting Started
 
@@ -57,9 +60,13 @@ To start webpack:
 npm run webpack
 ```
 
+### External API
+Note: In order to use the external API [apply for a Yummly API key](https://developer.yummly.com/).
+Please use ```client/src/components/configTemplate.js``` to hold the API keys.
+
 ## Screenshots
 
-#### Recipe List View
+#### - Recipe List View
 ![alt text](/client/dist/images/recipeListView.png "recipeListView")
 
 #### Recipe View
